@@ -1,13 +1,13 @@
 from store.products import get_all_products,add_product,update_product,record_sale,delete_product,view_product_details
-from store.supply import add_supplier
+from store.supply import add_supplier,view_supplier_products
 def main():
     print('''
           
 1. Add New Product #complete
 2. Update Product Stock #complete
-3. Record a Sale #partial complete
+3. Record a Sale #complete
 4. Add Supplier #complete
-5. View Supplier's Products 
+5. View Supplier's Products #complete 
 6. Generate Inventory Report
 7. Check Reorder Alerts
 8. View Product Details #complete
@@ -35,7 +35,10 @@ def main():
             p_id = int(input('Enter product id: '))
             u_quantity = int(input('Enter sold quantity: '))
             c = record_sale(p_id,u_quantity)
-            print(c)
+            h = c.copy() # create a copy of returned dictionary and change the quantity
+            h.pop('quantity')
+            h['quantity']=u_quantity
+            print(h)
         elif choice == 4:
             s_id = int(input('Enter Supplier ID: '))
             s_name = input('Enter Supplier Name: ')
@@ -43,8 +46,10 @@ def main():
             d = add_supplier(s_id,s_name,s_contact)
             print(d)
         elif choice == 5:
-
-            pass
+            s_id = int(input('Enter Supplier ID: '))
+            g = view_supplier_products(s_id)
+            print(f'Products of Supplier ID {s_id}')
+            print(g)
         elif choice == 6:
             pass
         elif choice == 7:
