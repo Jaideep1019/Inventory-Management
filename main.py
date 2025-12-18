@@ -1,5 +1,5 @@
 from store.products import get_all_products,add_product,update_product,record_sale,delete_product,view_product_details
-from store.supply import add_supplier,view_supplier_products
+from store.supply import add_supplier,get_supplier_products
 def main():
     print('''
           
@@ -47,7 +47,7 @@ def main():
             print(d)
         elif choice == 5:
             s_id = int(input('Enter Supplier ID: '))
-            g = view_supplier_products(s_id)
+            g = get_supplier_products(s_id)
             print(f'Products of Supplier ID {s_id}')
             print(g)
         elif choice == 6:

@@ -56,8 +56,7 @@ def add_supplier(s_id,s_name,s_contact):
     })
     return 'Supplier Added Successfully'
 
-def view_supplier_products(s_id):
+def get_supplier_products(s_id):
     for s in supply_products:
         if s['supplier_id'] == s_id:
             return s['products']
-    pass
